@@ -60,10 +60,10 @@ GIT_TAG="${SOURCE_BRANCH:-master}"
 #     v0.1.0-beta
 #     v2.0.0-rc
 #     v2.0.0-rc2
-if [[ "$GIT_TAG" =~ ^v[0-9\.]+(-(alpha|beta|rc|master)[0-9]*)?$ ]]; then
+if [[ "$GIT_TAG" =~ ^v[0-9\.]+(-(alpha|beta|rc)[0-9]*)?$ ]]; then
     # The image version is the git tag minus the leading 'v'.
     BASEIMAGE_DOCKER_IMAGE_VERSION="${GIT_TAG:1}"
-elif  [[ "$GIT_TAG" = "dev" ]]; then
+elif  [[ "$GIT_TAG" = "master" ]]; then
     # Special case for Travis/development builds.
     BASEIMAGE_DOCKER_IMAGE_VERSION="$GIT_TAG"
 else
