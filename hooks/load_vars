@@ -53,14 +53,14 @@ BASEIMAGE_DOCKER_IMAGE_NAME=$BASEIMAGE_DOCKER_REPO:$BASEIMAGE_DOCKER_TAG
 # is set to "dev".
 #
 
-GIT_TAG="${SOURCE_BRANCH:-dev}"
+GIT_TAG="${SOURCE_BRANCH:-master}"
 
 # Make sure the git tag has a format like:
 #     v1.0.0
 #     v0.1.0-beta
 #     v2.0.0-rc
 #     v2.0.0-rc2
-if [[ "$GIT_TAG" =~ ^v[0-9\.]+(-(alpha|beta|rc)[0-9]*)?$ ]]; then
+if [[ "$GIT_TAG" =~ ^v[0-9\.]+(-(alpha|beta|rc|master)[0-9]*)?$ ]]; then
     # The image version is the git tag minus the leading 'v'.
     BASEIMAGE_DOCKER_IMAGE_VERSION="${GIT_TAG:1}"
 elif  [[ "$GIT_TAG" = "dev" ]]; then
